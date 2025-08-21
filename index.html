@@ -95,6 +95,9 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo-svg {
@@ -474,6 +477,10 @@
                 width: 250px;
             }
 
+            .company-logo img {
+                max-width: 200px !important;
+            }
+
             .certificate {
                 padding: 20px;
                 margin: 10px;
@@ -487,6 +494,10 @@
                 font-size: 1.4rem;
             }
 
+            .certificate img {
+                width: 100px !important;
+            }
+
             .video-controls {
                 flex-direction: column;
                 gap: 10px;
@@ -497,6 +508,10 @@
                 top: auto;
                 right: auto;
                 margin-bottom: 20px;
+            }
+
+            .login-header img {
+                width: 100px !important;
             }
         }
 
@@ -534,9 +549,9 @@
     <!-- Pantalla de Login -->
     <div id="loginScreen" class="login-container" style="display: none;">
         <div class="login-header">
-            <div class="login-logo">🏠</div>
-            <h2 style="color: #8B4513; margin-bottom: 10px;">Prefabricadas Premium</h2>
-            <p style="color: #666; margin-bottom: 30px;">Academia de Capacitación</p>
+            <img src="./assets/5. TRASPARENTE LETRA NEGRA.png" alt="Prefabricadas Premium" style="width: 120px; height: auto; margin: 0 auto 15px; display: block;">
+            <h2 style="color: #8B4513; margin-bottom: 10px;">Academia de Capacitación</h2>
+            <p style="color: #666; margin-bottom: 30px;">Plataforma de Formación Premium</p>
         </div>
         
         <div id="loginForm" class="login-form">
@@ -569,6 +584,11 @@
     <div id="mainApp" style="display: none;">
         <button id="logoutBtn" class="btn logout-btn">🚪 Cerrar Sesión</button>
         
+        <!-- Logo watermark -->
+        <div style="position: fixed; top: 20px; left: 20px; z-index: 999; opacity: 0.8;">
+            <img src="./assets/5. TRASPARENTE LETRA NEGRA.png" alt="Premium" style="width: 60px; height: auto;">
+        </div>
+        
         <div class="container">
             <div class="header">
                 <div class="user-info" id="userInfo">
@@ -576,26 +596,10 @@
                 </div>
                 
                 <div class="company-logo">
-                    <svg class="logo-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="brownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#8B4513"/>
-                                <stop offset="50%" style="stop-color:#A0522D"/>
-                                <stop offset="100%" style="stop-color:#D2B48C"/>
-                            </linearGradient>
-                        </defs>
-                        
-                        <rect x="50" y="40" width="80" height="200" fill="#8B4513"/>
-                        <polygon points="150,60 350,60 350,150 280,150 280,200 150,200" fill="#A0522D"/>
-                        <polygon points="360,60 580,60 500,150 360,150" fill="#D2B48C"/>
-                        <rect x="150" y="220" width="450" height="60" fill="#D2B48C"/>
-                        
-                        <text x="50" y="320" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#000">PREFABRICADAS</text>
-                        <text x="480" y="380" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="#000" letter-spacing="8px">PREMIUM</text>
-                    </svg>
+                    <img src="./assets/5. TRASPARENTE LETRA NEGRA.png" alt="Prefabricadas Premium" style="width: 100%; height: auto; max-width: 280px;">
                 </div>
                 <h1>Academia de Capacitación Comercial</h1>
-                <p>Certifícate como vendedor especializado en productos prefabricados premium <span class="premium-badge">PREMIUM</span></p>
+                <p>Sistema de Formación Integral para Vendedores Especializados <span class="premium-badge">PREMIUM</span></p>
             </div>
 
             <div class="progress-container">
@@ -643,7 +647,7 @@
 
                 <div class="video-content">
                     <iframe class="video-player" id="videoPlayer" 
-                            src="https://www.youtube.com/embed/XhsZodToiIY" 
+                            src="https://www.youtube.com/embed/rWQyR3lLNIc" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
@@ -837,45 +841,45 @@
                 this.currentUser = null;
                 this.currentVideo = 0;
                 this.completedVideos = new Set();
-                this.correctAnswers = ['b', 'b', 'b', 'b', 'b'];
+                this.correctAnswers = ['b', 'b', 'a', 'a', 'b', 'a', 'b'];
                 this.userProfile = null;
                 
-                // Videos con YouTube - TUS VIDEOS REALES
+                // Videos con YouTube - TUS VIDEOS REALES ACTUALIZADOS
                 this.videos = [
                     {
                         title: "¿Quiénes somos?",
                         description: "Conoce nuestra empresa e historia, desde nuestros inicios hasta convertirnos en líderes en productos prefabricados premium.",
-                        src: "https://www.youtube.com/embed/XhsZodToiIY",
+                        src: "https://www.youtube.com/embed/rWQyR3lLNIc",
                         duration: "3 min"
                     },
                     {
                         title: "¿A quién vendemos?",
                         description: "Identifica nuestro público objetivo en el mercado de la construcción.",
-                        src: "https://www.youtube.com/embed/Lw9oWAvCUy0",
+                        src: "https://www.youtube.com/embed/vswGpr5DCAY",
                         duration: "1 min"
                     },
                     {
                         title: "Portafolio",
                         description: "Domina todo nuestro potencial, entendiendo la gama de posibilidades que podemos entregar al mercado.",
-                        src: "https://www.youtube.com/embed/1BCmle5kCeY",
+                        src: "https://www.youtube.com/embed/asQSaXahJ5s",
                         duration: "2 min"
                     },
                     {
                         title: "¿Qué materiales entregamos?",
                         description: "Domina nuestras materialidades premium: tipos de prefabricados, especificaciones técnicas, ventajas competitivas y aplicaciones.",
-                        src: "https://www.youtube.com/embed/agJsGWn44Y8",
+                        src: "https://www.youtube.com/embed/_3xxfWb1SRg",
                         duration: "3 min"
                     },
                     {
                         title: "¿Qué es lo que se entrega?",
                         description: "Comprende exactamente qué recibe el cliente: procesos de fabricación, tiempos de producción, logística especializada.",
-                        src: "https://www.youtube.com/embed/Bzswid8QZtE",
+                        src: "https://www.youtube.com/embed/sI1btnVoFME",
                         duration: "17 min"
                     },
                     {
                         title: "¿Proceso de compra?",
                         description: "Domina cada etapa de nuestro proceso comercial especializado: consultoría inicial, diseño personalizado, cotización.",
-                        src: "https://www.youtube.com/embed/XZUlNLshsmI",
+                        src: "https://www.youtube.com/embed/xKY03vo1TGM",
                         duration: "17 min"
                     }
                 ];
@@ -1208,7 +1212,7 @@
                 const answers = [];
                 let allAnswered = true;
 
-                for (let i = 1; i <= 5; i++) {
+                for (let i = 1; i <= 7; i++) {
                     const answer = document.querySelector(`input[name="q${i}"]:checked`);
                     if (answer) {
                         answers.push(answer.value);
@@ -1326,8 +1330,11 @@
                 }
                 document.getElementById('certDate').textContent = new Date().toLocaleDateString('es-ES');
                 
-                // Save certificate
-                await this.issueCertificate();
+                // Generate and display certificate ID
+                const certificateId = await this.issueCertificate();
+                if (certificateId) {
+                    document.getElementById('certificateId').textContent = certificateId;
+                }
                 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 this.celebrateCompletion();
