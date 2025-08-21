@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia de Capacitación - Prefabricadas Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2B48C 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilos de Login */
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-top: 4px solid #8B4513;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-form input:focus {
+            border-color: #A0522D;
+            outline: none;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        /* Resto de tus estilos originales */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+        }
+
+        .user-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 25px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .company-logo {
+            width: 300px;
+            height: auto;
+            margin: 0 auto 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .progress-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-top: 4px solid #8B4513;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8B4513, #A0522D, #D2B48C);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .course-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #e0e0e0;
+            max-height: 600px;
+            overflow-y: auto;
+            border-top: 4px solid #8B4513;
+        }
+
+        .video-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .video-item:hover {
+            background: #FDF5E6;
+            transform: translateX(5px);
+            border-left-color: #D2B48C;
+        }
+
+        .video-item.completed {
+            border-left-color: #8B4513;
+            background: #F5F5DC;
+        }
+
+        .video-item.active {
+            border-left-color: #A0522D;
+            background: #FDF5E6;
+        }
+
+        .video-content {
+            padding: 30px;
+        }
+
+        .video-player {
+            width: 100%;
+            max-width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 3px solid #D2B48C;
+        }
+
+        .video-info h2 {
+            color: #8B4513;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .video-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #A0522D;
+            color: white;
+            border: 2px solid #A0522D;
+        }
+
+        .btn-primary:hover {
+            background: #8B4513;
+            border-color: #8B4513;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #8B4513;
+            color: white;
+            border: 2px solid #8B4513;
+        }
+
+        .btn-success:hover {
+            background: #654321;
+            border-color: #654321;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .exam-container {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-top: 4px solid #8B4513;
+        }
+
+        .question {
+            background: #FDF5E6;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #A0522D;
+        }
+
+        .question h3 {
+            margin-bottom: 15px;
+            color: #8B4513;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #A0522D;
+            background: #FDF5E6;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .certificate-container {
+            display: none;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .certificate {
+            border: 8px solid #8B4513;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 600px;
+            background: linear-gradient(45deg, #FDF5E6, #ffffff);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .certificate::before {
+            content: '🏆';
+            font-size: 3rem;
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 20px;
+        }
+
+        .certificate h2 {
+            color: #8B4513;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .certificate-name {
+            font-size: 1.8rem;
+            color: #8B4513;
+            margin: 20px 0;
+            border-bottom: 2px solid #A0522D;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .completion-badge {
+            width: 20px;
+            height: 20px;
+            background: #8B4513;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .exam-results {
+            background: #FDF5E6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #8B4513;
+        }
+
+        .correct { 
+            background: #F0F8E6 !important; 
+            border-color: #8B4513 !important; 
+        }
+        
+        .incorrect { 
+            background: #FFF5F5 !important; 
+            border-color: #CD5C5C !important; 
+        }
+
+        .option.selected {
+            border-color: #A0522D;
+            background: #FDF5E6;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #8B4513;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .video-item .video-duration {
+            font-size: 0.8rem;
+            color: #8B4513;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .certificate-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .premium-badge {
+            background: linear-gradient(45deg, #D2B48C, #F4A460);
+            color: #8B4513;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-left: 8px;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .course-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-list {
+                max-height: none;
+                order: 2;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .company-logo {
+                width: 250px;
+            }
+
+            .certificate {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .certificate h2 {
+                font-size: 2rem;
+            }
+
+            .certificate-name {
+                font-size: 1.4rem;
+            }
+
+            .video-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logout-btn {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .certificate-container, .certificate-container * {
+                visibility: visible;
+            }
+            
+            .certificate-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+            
+            .btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de Loading -->
+    <div id="loadingScreen" class="loading">
+        <div class="container">
+            <h2>🏠 Cargando Academia de Capacitación...</h2>
+            <p>Iniciando sistema...</p>
+        </div>
+    </div>
+
+    <!-- Pantalla de Login -->
+    <div id="loginScreen" class="login-container" style="display: none;">
+        <div class="login-header">
+            <div class="login-logo">🏠</div>
+            <h2 style="color: #8B4513; margin-bottom: 10px;">Prefabricadas Premium</h2>
+            <p style="color: #666; margin-bottom: 30px;">Academia de Capacitación</p>
+        </div>
+        
+        <div id="loginForm" class="login-form">
+            <input type="email" id="email" placeholder="📧 Email corporativo" required>
+            <input type="password" id="password" placeholder="🔒 Contraseña" required>
+            <button id="loginBtn" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">
+                Acceder a mi Capacitación
+            </button>
+            <hr style="margin: 20px 0; border: 1px solid #e0e0e0;">
+            <button id="showRegisterBtn" class="btn btn-success" style="width: 100%;">
+                🆕 Registrar Nuevo Vendedor
+            </button>
+        </div>
+
+        <div id="registerForm" class="login-form" style="display: none;">
+            <input type="text" id="fullName" placeholder="👤 Nombre Completo" required>
+            <input type="email" id="regEmail" placeholder="📧 Email corporativo" required>
+            <input type="password" id="regPassword" placeholder="🔒 Contraseña (mín. 6 caracteres)" required>
+            <input type="text" id="company" placeholder="🏢 Empresa/Sucursal" required>
+            <button id="registerBtn" class="btn btn-success" style="width: 100%; margin-bottom: 15px;">
+                Crear Mi Cuenta
+            </button>
+            <button id="backToLoginBtn" class="btn btn-primary" style="width: 100%;">
+                ⬅️ Volver al Login
+            </button>
+        </div>
+    </div>
+
+    <!-- Aplicación Principal -->
+    <div id="mainApp" style="display: none;">
+        <button id="logoutBtn" class="btn logout-btn">🚪 Cerrar Sesión</button>
+        
+        <div class="container">
+            <div class="header">
+                <div class="user-info" id="userInfo">
+                    <span id="userName">Usuario</span> | <span id="userCompany">Empresa</span>
+                </div>
+                
+                <div class="company-logo">
+                    <svg class="logo-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="brownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B4513"/>
+                                <stop offset="50%" style="stop-color:#A0522D"/>
+                                <stop offset="100%" style="stop-color:#D2B48C"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <rect x="50" y="40" width="80" height="200" fill="#8B4513"/>
+                        <polygon points="150,60 350,60 350,150 280,150 280,200 150,200" fill="#A0522D"/>
+                        <polygon points="360,60 580,60 500,150 360,150" fill="#D2B48C"/>
+                        <rect x="150" y="220" width="450" height="60" fill="#D2B48C"/>
+                        
+                        <text x="50" y="320" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#000">PREFABRICADAS</text>
+                        <text x="480" y="380" font-family="Arial, sans-serif" font-size="24" font-weight="300" fill="#000" letter-spacing="8px">PREMIUM</text>
+                    </svg>
+                </div>
+                <h1>Academia de Capacitación Comercial</h1>
+                <p>Certifícate como vendedor especializado en productos prefabricados premium <span class="premium-badge">PREMIUM</span></p>
+            </div>
+
+            <div class="progress-container">
+                <h3>Progreso del Curso</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">0 de 6 videos completados (0%)</p>
+            </div>
+
+            <div class="course-content" id="courseContent">
+                <div class="video-list">
+                    <h3 style="margin-bottom: 20px; color: #8B4513;">📚 Módulos de Capacitación</h3>
+                    <div class="video-item active" data-video="0">
+                        <h4>1. ¿Quiénes somos?</h4>
+                        <p>Conoce nuestra empresa e historia</p>
+                        <div class="video-duration">⏱️ 3 min</div>
+                    </div>
+                    <div class="video-item" data-video="1">
+                        <h4>2. ¿A quién vendemos?</h4>
+                        <p>Identifica nuestro público objetivo</p>
+                        <div class="video-duration">⏱️ 1 min</div>
+                    </div>
+                    <div class="video-item" data-video="2">
+                        <h4>3. Portafolio</h4>
+                        <p>Domina nuestro potencial</p>
+                        <div class="video-duration">⏱️ 2 min</div>
+                    </div>
+                    <div class="video-item" data-video="3">
+                        <h4>4. Materialidad</h4>
+                        <p>Comprende los mundos constructivos</p>
+                        <div class="video-duration">⏱️ 3 min</div>
+                    </div>
+                    <div class="video-item" data-video="4">
+                        <h4>5. ¿Qué se entrega?</h4>
+                        <p>Comprende que se entrega al cliente</p>
+                        <div class="video-duration">⏱️ 17 min</div>
+                    </div>
+                    <div class="video-item" data-video="5">
+                        <h4>6. ¿Proceso de compra?</h4>
+                        <p>Domina cada etapa comercial</p>
+                        <div class="video-duration">⏱️ 17 min</div>
+                    </div>
+                </div>
+
+                <div class="video-content">
+                    <iframe class="video-player" id="videoPlayer" 
+                            src="https://www.youtube.com/embed/XhsZodToiIY" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    
+                    <div class="video-info">
+                        <h2 id="videoTitle">¿Quiénes somos?</h2>
+                        <p class="video-description" id="videoDescription">
+                            Conoce nuestra empresa e historia, desde nuestros inicios hasta convertirnos en 
+                            líderes en productos prefabricados premium. Comprende nuestra misión, visión y 
+                            los valores que nos distinguen en el mercado.
+                        </p>
+                    </div>
+
+                    <div class="video-controls">
+                        <button class="btn btn-primary" id="prevBtn" disabled>⬅️ Anterior</button>
+                        <button class="btn btn-success" id="markCompleteBtn">✅ Marcar como Completado</button>
+                        <button class="btn btn-primary" id="nextBtn">Siguiente ➡️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-container" id="examContainer">
+                <h2 style="text-align: center; margin-bottom: 30px; color: #8B4513;">
+                    📝 Examen de Certificación
+                </h2>
+                <p style="text-align: center; margin-bottom: 30px; color: #666;">
+                    Responde todas las preguntas correctamente para obtener tu certificación
+                </p>
+
+                <div class="question">
+                    <h3>1. ¿Cuál es el elemento más importante para representar correctamente a Prefabricadas Premium?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a"> Memorizar todos los productos de memoria
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b"> Conocer y transmitir nuestros valores de calidad premium y cultura organizacional
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c"> Enfocarse únicamente en el precio
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>2. ¿Cómo identificas mejor a nuestro cliente ideal en el mercado de prefabricados?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a"> Vendiendo a cualquier constructor o empresa
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b"> Conociendo el perfil, necesidades y características específicas de nuestro segmento premium
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c"> Contactando únicamente empresas grandes
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>3. ¿Cuál es la clave para explicar eficazmente nuestros materiales prefabricados?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a"> Mencionar todas las especificaciones técnicas
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b"> Enfocarse en la calidad premium, durabilidad y ventajas de nuestras materialidades
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c"> Comparar siempre con productos tradicionales
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>4. ¿Qué debe saber el cliente sobre nuestras entregas?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a"> Solo el precio y descuentos
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b"> Tiempos de fabricación, logística de entrega, instalación y garantías premium
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c"> Únicamente la fecha de entrega estimada
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h3>5. ¿Cuál es la etapa más crítica en nuestro proceso de compra?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a"> Solo el cierre de venta y cotización
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b"> Todas las etapas: desde consultoría inicial hasta entrega, instalación y seguimiento post-venta
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c"> Únicamente la presentación de productos
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-success" id="submitExam">🎯 Enviar Examen</button>
+                </div>
+
+                <div class="exam-results" id="examResults" style="display: none;">
+                    <h3>Resultados del Examen</h3>
+                    <p id="scoreText"></p>
+                </div>
+            </div>
+
+            <div class="certificate-container" id="certificateContainer">
+                <div class="certificate">
+                    <h2>CERTIFICADO DE COMPLETACIÓN</h2>
+                    <h3>Prefabricadas Premium</h3>
+                    <p>Por la presente certificamos que</p>
+                    <div class="certificate-name" id="studentNameDisplay">
+                        [Nombre se cargará automáticamente]
+                    </div>
+                    <p>ha completado exitosamente el curso de</p>
+                    <h3 style="color: #A0522D; margin: 20px 0;">
+                        "Especialista en Ventas de Productos Prefabricados Premium"
+                    </h3>
+                    <p>Demostrando competencia en conocimiento de la empresa, identificación del público objetivo,<br>
+                    dominio de materialidades, procesos de entrega y metodología comercial especializada.</p>
+                    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p><strong>Fecha:</strong> <span id="certDate"></span></p>
+                            <p><strong>Puntuación:</strong> 100%</p>
+                            <p><strong>Nivel:</strong> Premium</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="border-top: 1px solid #8B4513; margin-top: 20px; padding-top: 10px;">
+                                Director de Capacitación<br>
+                                <small>Prefabricadas Premium</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="certificate-actions">
+                    <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir Certificado</button>
+                    <button class="btn btn-success" id="restartCourse">🔄 Reiniciar Curso</button>
+                    <button class="btn btn-primary" onclick="location.href='mailto:?subject=Mi Certificación - Prefabricadas Premium&body=¡Estoy orgulloso de compartir que me he certificado como Especialista en Ventas de Productos Prefabricados Premium! 🎉'">📧 Compartir por Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Importar Firebase con tu configuración
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged 
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc, 
+            getDoc, 
+            updateDoc,
+            collection,
+            addDoc,
+            serverTimestamp 
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // TU CONFIGURACIÓN REAL DE FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyCVPYAMyRmWVzQ8NfyJVSeoPybQxaEpeAQ",
+            authDomain: "prefabricadas-training-v2.firebaseapp.com",
+            projectId: "prefabricadas-training-v2",
+            storageBucket: "prefabricadas-training-v2.firebasestorage.app",
+            messagingSenderId: "125236838775",
+            appId: "1:125236838775:web:fa553422f56eddf32fa172"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        class PrefabricadasTrainingPlatform {
+            constructor() {
+                this.currentUser = null;
+                this.currentVideo = 0;
+                this.completedVideos = new Set();
+                this.correctAnswers = ['b', 'b', 'b', 'b', 'b'];
+                this.userProfile = null;
+                
+                // Videos con YouTube - TUS VIDEOS REALES
+                this.videos = [
+                    {
+                        title: "¿Quiénes somos?",
+                        description: "Conoce nuestra empresa e historia, desde nuestros inicios hasta convertirnos en líderes en productos prefabricados premium.",
+                        src: "https://www.youtube.com/embed/XhsZodToiIY",
+                        duration: "3 min"
+                    },
+                    {
+                        title: "¿A quién vendemos?",
+                        description: "Identifica nuestro público objetivo en el mercado de la construcción.",
+                        src: "https://www.youtube.com/embed/Lw9oWAvCUy0",
+                        duration: "1 min"
+                    },
+                    {
+                        title: "Portafolio",
+                        description: "Domina todo nuestro potencial, entendiendo la gama de posibilidades que podemos entregar al mercado.",
+                        src: "https://www.youtube.com/embed/1BCmle5kCeY",
+                        duration: "2 min"
+                    },
+                    {
+                        title: "¿Qué materiales entregamos?",
+                        description: "Domina nuestras materialidades premium: tipos de prefabricados, especificaciones técnicas, ventajas competitivas y aplicaciones.",
+                        src: "https://www.youtube.com/embed/agJsGWn44Y8",
+                        duration: "3 min"
+                    },
+                    {
+                        title: "¿Qué es lo que se entrega?",
+                        description: "Comprende exactamente qué recibe el cliente: procesos de fabricación, tiempos de producción, logística especializada.",
+                        src: "https://www.youtube.com/embed/Bzswid8QZtE",
+                        duration: "17 min"
+                    },
+                    {
+                        title: "¿Proceso de compra?",
+                        description: "Domina cada etapa de nuestro proceso comercial especializado: consultoría inicial, diseño personalizado, cotización.",
+                        src: "https://www.youtube.com/embed/XZUlNLshsmI",
+                        duration: "17 min"
+                    }
+                ];
+
+                this.initAuth();
+                this.setupEventListeners();
+            }
+
+            initAuth() {
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        this.currentUser = user;
+                        this.loadUserProfile();
+                    } else {
+                        this.showLoginScreen();
+                    }
+                });
+            }
+
+            setupEventListeners() {
+                // Login events
+                document.getElementById('loginBtn').addEventListener('click', () => this.login());
+                document.getElementById('showRegisterBtn').addEventListener('click', () => this.showRegisterForm());
+                document.getElementById('registerBtn').addEventListener('click', () => this.register());
+                document.getElementById('backToLoginBtn').addEventListener('click', () => this.showLoginForm());
+                document.getElementById('logoutBtn').addEventListener('click', () => this.logout());
+
+                // Video navigation
+                document.getElementById('prevBtn').addEventListener('click', () => this.previousVideo());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextVideo());
+                document.getElementById('markCompleteBtn').addEventListener('click', () => this.markVideoComplete());
+
+                // Video list clicks
+                document.querySelectorAll('.video-item').forEach((item, index) => {
+                    item.addEventListener('click', () => this.loadVideo(index));
+                });
+
+                // Exam
+                document.getElementById('submitExam').addEventListener('click', () => this.submitExam());
+                document.getElementById('restartCourse').addEventListener('click', () => this.restartCourse());
+
+                // Enter key support
+                document.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const activeForm = document.querySelector('#loginForm:not([style*="none"]), #registerForm:not([style*="none"])');
+                        if (activeForm) {
+                            if (activeForm.id === 'loginForm') {
+                                this.login();
+                            } else {
+                                this.register();
+                            }
+                        }
+                    }
+                });
+            }
+
+            async login() {
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+
+                if (!email || !password) {
+                    this.showNotification('Por favor completa todos los campos', 'error');
+                    return;
+                }
+
+                try {
+                    this.showNotification('Iniciando sesión...', 'info');
+                    await signInWithEmailAndPassword(auth, email, password);
+                } catch (error) {
+                    console.error('Error de login:', error);
+                    let message = 'Error de acceso';
+                    if (error.code === 'auth/user-not-found') {
+                        message = 'Usuario no encontrado';
+                    } else if (error.code === 'auth/wrong-password') {
+                        message = 'Contraseña incorrecta';
+                    } else if (error.code === 'auth/invalid-email') {
+                        message = 'Email inválido';
+                    }
+                    this.showNotification(message, 'error');
+                }
+            }
+
+            async register() {
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('regEmail').value.trim();
+                const password = document.getElementById('regPassword').value;
+                const company = document.getElementById('company').value.trim();
+
+                if (!fullName || !email || !password || !company) {
+                    this.showNotification('Por favor completa todos los campos', 'error');
+                    return;
+                }
+
+                if (password.length < 6) {
+                    this.showNotification('La contraseña debe tener al menos 6 caracteres', 'error');
+                    return;
+                }
+
+                try {
+                    this.showNotification('Creando cuenta...', 'info');
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+
+                    // Crear perfil en Firestore
+                    await setDoc(doc(db, 'users', user.uid), {
+                        fullName,
+                        email,
+                        company,
+                        createdAt: serverTimestamp(),
+                        progress: {
+                            completedVideos: [],
+                            currentVideo: 0,
+                            examCompleted: false,
+                            examScore: 0,
+                            certificateIssued: false,
+                            lastUpdated: serverTimestamp()
+                        }
+                    });
+
+                    this.showNotification('¡Cuenta creada exitosamente!', 'success');
+                } catch (error) {
+                    console.error('Error de registro:', error);
+                    let message = 'Error al crear cuenta';
+                    if (error.code === 'auth/email-already-in-use') {
+                        message = 'Este email ya está registrado';
+                    } else if (error.code === 'auth/weak-password') {
+                        message = 'Contraseña muy débil';
+                    } else if (error.code === 'auth/invalid-email') {
+                        message = 'Email inválido';
+                    }
+                    this.showNotification(message, 'error');
+                }
+            }
+
+            async loadUserProfile() {
+                if (!this.currentUser) return;
+
+                try {
+                    const userDoc = await getDoc(doc(db, 'users', this.currentUser.uid));
+                    if (userDoc.exists()) {
+                        this.userProfile = userDoc.data();
+                        const progress = this.userProfile.progress || {};
+                        
+                        this.completedVideos = new Set(progress.completedVideos || []);
+                        this.currentVideo = progress.currentVideo || 0;
+                        
+                        this.showMainApp();
+                        this.updateUserInfo();
+                        this.loadVideo(this.currentVideo);
+                        this.updateProgress();
+                        this.updateUIFromProgress();
+                    } else {
+                        // Usuario sin perfil, redirigir a registro
+                        this.showNotification('Perfil no encontrado. Por favor registrate nuevamente.', 'error');
+                        this.logout();
+                    }
+                } catch (error) {
+                    console.error('Error loading profile:', error);
+                    this.showNotification('Error al cargar perfil', 'error');
+                }
+            }
+
+            updateUserInfo() {
+                if (this.userProfile) {
+                    document.getElementById('userName').textContent = this.userProfile.fullName || 'Usuario';
+                    document.getElementById('userCompany').textContent = this.userProfile.company || 'Empresa';
+                }
+            }
+
+            async saveProgress() {
+                if (!this.currentUser) return;
+
+                try {
+                    await updateDoc(doc(db, 'users', this.currentUser.uid), {
+                        'progress.completedVideos': Array.from(this.completedVideos),
+                        'progress.currentVideo': this.currentVideo,
+                        'progress.lastUpdated': serverTimestamp()
+                    });
+                } catch (error) {
+                    console.error('Error saving progress:', error);
+                }
+            }
+
+            showLoginScreen() {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'block';
+                document.getElementById('mainApp').style.display = 'none';
+            }
+
+            showMainApp() {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                this.showNotification(`¡Bienvenido ${this.userProfile?.fullName || ''}!`, 'success');
+            }
+
+            showLoginForm() {
+                document.getElementById('loginForm').style.display = 'block';
+                document.getElementById('registerForm').style.display = 'none';
+                this.clearForm('loginForm');
+            }
+
+            showRegisterForm() {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('registerForm').style.display = 'block';
+                this.clearForm('registerForm');
+            }
+
+            clearForm(formId) {
+                const form = document.getElementById(formId);
+                const inputs = form.querySelectorAll('input');
+                inputs.forEach(input => input.value = '');
+            }
+
+            async logout() {
+                try {
+                    await signOut(auth);
+                    this.showNotification('¡Hasta luego!', 'info');
+                    // Reset state
+                    this.currentUser = null;
+                    this.userProfile = null;
+                    this.currentVideo = 0;
+                    this.completedVideos.clear();
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                }
+            }
+
+            loadVideo(index) {
+                if (index < 0 || index >= this.videos.length) return;
+
+                this.currentVideo = index;
+                const video = this.videos[index];
+
+                // Update video player
+                document.getElementById('videoPlayer').src = video.src;
+                document.getElementById('videoTitle').textContent = video.title;
+                document.getElementById('videoDescription').textContent = video.description;
+
+                // Update navigation buttons
+                document.getElementById('prevBtn').disabled = index === 0;
+                document.getElementById('nextBtn').disabled = index === this.videos.length - 1;
+
+                // Update video list
+                document.querySelectorAll('.video-item').forEach((item, i) => {
+                    item.classList.remove('active');
+                    if (i === index) item.classList.add('active');
+                });
+
+                // Update completion button
+                const completeBtn = document.getElementById('markCompleteBtn');
+                if (this.completedVideos.has(index)) {
+                    completeBtn.textContent = '✅ Completado';
+                    completeBtn.disabled = true;
+                } else {
+                    completeBtn.textContent = '✅ Marcar como Completado';
+                    completeBtn.disabled = false;
+                }
+            }
+
+            previousVideo() {
+                if (this.currentVideo > 0) {
+                    this.loadVideo(this.currentVideo - 1);
+                }
+            }
+
+            nextVideo() {
+                if (this.currentVideo < this.videos.length - 1) {
+                    this.loadVideo(this.currentVideo + 1);
+                } else if (this.completedVideos.size === this.videos.length) {
+                    this.showExam();
+                }
+            }
+
+            async markVideoComplete() {
+                this.completedVideos.add(this.currentVideo);
+                
+                // Save progress to Firebase
+                await this.saveProgress();
+                
+                // Update UI
+                const videoItem = document.querySelectorAll('.video-item')[this.currentVideo];
+                videoItem.classList.add('completed');
+                if (!videoItem.querySelector('.completion-badge')) {
+                    videoItem.innerHTML += '<span class="completion-badge">✓</span>';
+                }
+
+                const completeBtn = document.getElementById('markCompleteBtn');
+                completeBtn.textContent = '✅ Completado';
+                completeBtn.disabled = true;
+
+                this.updateProgress();
+
+                // Check if all videos completed
+                if (this.completedVideos.size === this.videos.length) {
+                    setTimeout(() => {
+                        this.showNotification('¡Felicitaciones! Has completado toda la capacitación. ¡Hora del examen final!', 'success');
+                        this.showExam();
+                    }, 1500);
+                } else if (this.currentVideo < this.videos.length - 1) {
+                    setTimeout(() => this.nextVideo(), 1000);
+                }
+            }
+
+            updateProgress() {
+                const progress = (this.completedVideos.size / this.videos.length) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressText').textContent = 
+                    `${this.completedVideos.size} de ${this.videos.length} videos completados (${Math.round(progress)}%)`;
+            }
+
+            updateUIFromProgress() {
+                document.querySelectorAll('.video-item').forEach((item, index) => {
+                    if (this.completedVideos.has(index)) {
+                        item.classList.add('completed');
+                        if (!item.querySelector('.completion-badge')) {
+                            item.innerHTML += '<span class="completion-badge">✓</span>';
+                        }
+                    }
+                });
+            }
+
+            showExam() {
+                document.getElementById('courseContent').style.display = 'none';
+                document.getElementById('examContainer').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            async submitExam() {
+                const answers = [];
+                let allAnswered = true;
+
+                for (let i = 1; i <= 5; i++) {
+                    const answer = document.querySelector(`input[name="q${i}"]:checked`);
+                    if (answer) {
+                        answers.push(answer.value);
+                    } else {
+                        allAnswered = false;
+                    }
+                }
+
+                if (!allAnswered) {
+                    this.showNotification('Por favor, responde todas las preguntas antes de enviar', 'error');
+                    return;
+                }
+
+                let score = 0;
+                const results = document.getElementById('examResults');
+                results.style.display = 'block';
+
+                for (let i = 0; i < answers.length; i++) {
+                    const question = document.querySelectorAll('.question')[i];
+                    const options = question.querySelectorAll('.option');
+                    
+                    options.forEach(option => {
+                        const input = option.querySelector('input');
+                        if (input.value === this.correctAnswers[i]) {
+                            option.classList.add('correct');
+                            if (input.checked) score++;
+                        } else if (input.checked && input.value !== this.correctAnswers[i]) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                }
+
+                const percentage = Math.round((score / this.correctAnswers.length) * 100);
+                
+                // Save exam result
+                await this.saveExamResult(score, percentage, answers);
+
+                if (percentage === 100) {
+                    document.getElementById('scoreText').innerHTML = 
+                        `<strong>¡Felicitaciones! 🎉</strong><br>
+                         Puntuación: ${score}/${this.correctAnswers.length} (${percentage}%)<br>
+                         <span style="color: #8B4513;">¡Has aprobado el examen! Procede a obtener tu certificación.</span>`;
+                    
+                    setTimeout(() => this.showCertificate(), 3000);
+                } else {
+                    document.getElementById('scoreText').innerHTML = 
+                        `<strong>Resultado:</strong><br>
+                         Puntuación: ${score}/${this.correctAnswers.length} (${percentage}%)<br>
+                         <span style="color: #CD5C5C;">Necesitas 100% para certificarte. Revisa las respuestas correctas y vuelve a intentarlo.</span>`;
+                    
+                    setTimeout(() => {
+                        const retryBtn = document.createElement('button');
+                        retryBtn.className = 'btn btn-primary';
+                        retryBtn.textContent = '🔄 Intentar de Nuevo';
+                        retryBtn.onclick = () => this.retryExam();
+                        retryBtn.style.marginTop = '15px';
+                        results.appendChild(retryBtn);
+                    }, 2000);
+                }
+
+                document.getElementById('submitExam').disabled = true;
+            }
+
+            async saveExamResult(score, percentage, answers) {
+                if (!this.currentUser) return;
+
+                try {
+                    // Update user progress
+                    await updateDoc(doc(db, 'users', this.currentUser.uid), {
+                        'progress.examCompleted': true,
+                        'progress.examScore': percentage,
+                        'progress.examDate': serverTimestamp()
+                    });
+
+                    // Save exam attempt
+                    await addDoc(collection(db, 'examAttempts'), {
+                        userId: this.currentUser.uid,
+                        score,
+                        percentage,
+                        answers,
+                        correctAnswers: this.correctAnswers,
+                        timestamp: serverTimestamp()
+                    });
+                } catch (error) {
+                    console.error('Error saving exam result:', error);
+                }
+            }
+
+            retryExam() {
+                document.querySelectorAll('input[type="radio"]').forEach(input => {
+                    input.checked = false;
+                });
+                
+                document.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('correct', 'incorrect');
+                });
+
+                const results = document.getElementById('examResults');
+                results.style.display = 'none';
+                
+                const retryBtn = results.querySelector('.btn');
+                if (retryBtn) retryBtn.remove();
+
+                document.getElementById('submitExam').disabled = false;
+                document.getElementById('examContainer').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            async showCertificate() {
+                document.getElementById('examContainer').style.display = 'none';
+                document.getElementById('certificateContainer').style.display = 'block';
+                
+                // Set user name and date
+                if (this.userProfile) {
+                    document.getElementById('studentNameDisplay').textContent = this.userProfile.fullName;
+                }
+                document.getElementById('certDate').textContent = new Date().toLocaleDateString('es-ES');
+                
+                // Save certificate
+                await this.issueCertificate();
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.celebrateCompletion();
+            }
+
+            async issueCertificate() {
+                if (!this.currentUser || !this.userProfile) return;
+
+                try {
+                    const certificateData = {
+                        userId: this.currentUser.uid,
+                        studentName: this.userProfile.fullName,
+                        courseName: "Especialista en Ventas de Productos Prefabricados Premium",
+                        company: "Prefabricadas Premium",
+                        issueDate: new Date().toISOString(),
+                        score: 100,
+                        certificateId: `CERT-${Date.now()}-${this.currentUser.uid.substring(0, 6)}`
+                    };
+
+                    await addDoc(collection(db, 'certificates'), certificateData);
+                    
+                    await updateDoc(doc(db, 'users', this.currentUser.uid), {
+                        'progress.certificateIssued': true,
+                        'progress.certificateDate': serverTimestamp()
+                    });
+
+                    return certificateData.certificateId;
+                } catch (error) {
+                    console.error('Error issuing certificate:', error);
+                }
+            }
+
+            celebrateCompletion() {
+                const certificate = document.querySelector('.certificate');
+                certificate.style.animation = 'pulse 2s ease-in-out';
+                
+                setTimeout(() => {
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(() => this.createConfetti(), i * 100);
+                    }
+                }, 500);
+            }
+
+            createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${['#8B4513', '#A0522D', '#D2B48C', '#DEB887', '#F4A460'][Math.floor(Math.random() * 5)]};
+                    left: ${Math.random() * 100}vw;
+                    top: -10px;
+                    opacity: 0.8;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 10000;
+                `;
+                
+                document.body.appendChild(confetti);
+                
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
+                    { transform: `translateY(100vh) rotate(360deg)`, opacity: 0 }
+                ], {
+                    duration: 3000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+
+            async restartCourse() {
+                if (confirm('¿Estás seguro de que quieres reiniciar toda la capacitación? Se perderá todo el progreso.')) {
+                    this.currentVideo = 0;
+                    this.completedVideos.clear();
+                    
+                    // Reset Firebase
+                    if (this.currentUser) {
+                        await updateDoc(doc(db, 'users', this.currentUser.uid), {
+                            'progress.completedVideos': [],
+                            'progress.currentVideo': 0,
+                            'progress.examCompleted': false,
+                            'progress.examScore': 0,
+                            'progress.certificateIssued': false,
+                            'progress.lastUpdated': serverTimestamp()
+                        });
+                    }
+                    
+                    // Reset UI
+                    document.querySelectorAll('.video-item').forEach(item => {
+                        item.classList.remove('completed', 'active');
+                        const badge = item.querySelector('.completion-badge');
+                        if (badge) badge.remove();
+                    });
+                    
+                    document.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.checked = false;
+                    });
+                    document.querySelectorAll('.option').forEach(option => {
+                        option.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    document.getElementById('examResults').style.display = 'none';
+                    document.getElementById('submitExam').disabled = false;
+                    
+                    document.getElementById('certificateContainer').style.display = 'none';
+                    document.getElementById('examContainer').style.display = 'none';
+                    document.getElementById('courseContent').style.display = 'grid';
+                    
+                    this.loadVideo(0);
+                    this.updateProgress();
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    this.showNotification('Curso reiniciado. ¡Comencemos de nuevo!', 'info');
+                }
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                notification.style.background = type === 'success' ? '#8B4513' : type === 'error' ? '#CD5C5C' : '#A0522D';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 4000);
+            }
+        }
+
+        // Initialize platform
+        document.addEventListener('DOMContentLoaded', () => {
+            new PrefabricadasTrainingPlatform();
+        });
+    </script>
+</body>
+</html>
