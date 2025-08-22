@@ -55,20 +55,7 @@
             margin-bottom: 30px;
         }
 
-        .login-logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #8B4513, #A0522D);
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-        }
-
-        /* Resto de tus estilos originales */
+        /* Resto de estilos existentes */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -98,11 +85,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .logo-svg {
-            width: 100%;
-            height: auto;
         }
 
         .header h1 {
@@ -159,7 +141,7 @@
             background: #f8f9fa;
             padding: 20px;
             border-right: 1px solid #e0e0e0;
-            max-height: 600px;
+            max-height: 700px;
             overflow-y: auto;
             border-top: 4px solid #8B4513;
         }
@@ -220,6 +202,56 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Nuevos estilos para recursos */
+        .resources-section {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .resource-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .resource-item:hover {
+            border-color: #28a745;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #28a745;
+        }
+
+        .resource-title {
+            font-weight: bold;
+            color: #8B4513;
+            margin-bottom: 5px;
+        }
+
+        .resource-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
         }
 
         .btn {
@@ -256,6 +288,19 @@
             background: #654321;
             border-color: #654321;
             transform: translateY(-2px);
+        }
+
+        .btn-download {
+            background: #28a745;
+            color: white;
+            border: 2px solid #28a745;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .btn-download:hover {
+            background: #218838;
+            border-color: #218838;
         }
 
         .btn:disabled {
@@ -513,6 +558,10 @@
             .login-header img {
                 width: 100px !important;
             }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media print {
@@ -607,7 +656,7 @@
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
-                <p id="progressText">0 de 6 videos completados (0%)</p>
+                <p id="progressText">0 de 8 videos completados (0%)</p>
             </div>
 
             <div class="course-content" id="courseContent">
@@ -643,6 +692,16 @@
                         <p>Domina cada etapa comercial</p>
                         <div class="video-duration">⏱️ 17 min</div>
                     </div>
+                    <div class="video-item" data-video="6">
+                        <h4>7. Salvum - Simulación Crediticia</h4>
+                        <p>Aprende a realizar simulaciones</p>
+                        <div class="video-duration">⏱️ 5 min</div>
+                    </div>
+                    <div class="video-item" data-video="7">
+                        <h4>8. Pre Reserva</h4>
+                        <p>Ejecuta reservas en nuestro sistema</p>
+                        <div class="video-duration">⏱️ 4 min</div>
+                    </div>
                 </div>
 
                 <div class="video-content">
@@ -662,6 +721,26 @@
                         </p>
                     </div>
 
+                    <!-- Sección de Recursos Descargables - ACTUALIZADA -->
+                    <div class="resources-section">
+                        <h3>📁 Recursos de Apoyo</h3>
+                        <p>Descarga materiales técnicos y comerciales para tu capacitación:</p>
+                        <div class="resources-grid">
+                            <div class="resource-item">
+                                <div class="resource-icon">💰</div>
+                                <div class="resource-title">Valores por Metro Cuadrado</div>
+                                <div class="resource-description">Tarifario completo por materialidad y especificaciones técnicas</div>
+                                <button class="btn btn-download" onclick="downloadResource('valores-m2')">📥 Descargar Excel</button>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🏗️</div>
+                                <div class="resource-title">Listado de Proyectos Premium</div>
+                                <div class="resource-description">Portafolio completo de proyectos ejecutados y casos de éxito</div>
+                                <button class="btn btn-download" onclick="downloadResource('proyectos-premium')">📥 Descargar Excel</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="video-controls">
                         <button class="btn btn-primary" id="prevBtn" disabled>⬅️ Anterior</button>
                         <button class="btn btn-success" id="markCompleteBtn">✅ Marcar como Completado</button>
@@ -670,6 +749,7 @@
                 </div>
             </div>
 
+            <!-- Examen de Certificación -->
             <div class="exam-container" id="examContainer">
                 <h2 style="text-align: center; margin-bottom: 30px; color: #8B4513;">
                     📝 Examen de Certificación
@@ -793,6 +873,7 @@
                 </div>
             </div>
 
+            <!-- Certificado -->
             <div class="certificate-container" id="certificateContainer">
                 <div class="certificate">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
@@ -803,7 +884,7 @@
                         </div>
                     </div>
                     
-                    <h2>CERTIFICADO DE COMPLETACIÓN</h2>
+                    <h2>CERTIFICADO</h2>
                     <h3 style="color: #A0522D; margin: 15px 0;">Academia de Capacitación Premium</h3>
                     <p style="margin: 20px 0;">Por la presente certificamos que</p>
                     <div class="certificate-name" id="studentNameDisplay">
@@ -815,7 +896,7 @@
                     </h3>
                     <p style="margin: 20px 0; line-height: 1.6;">
                         Demostrando competencia en conocimiento de la empresa, identificación del público objetivo,<br>
-                        dominio de materialidades, procesos de entrega y metodología comercial especializada.
+                        dominio de materialidades, procesos de entrega, sistemas Salvum y metodología comercial especializada.
                     </p>
                     <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: center;">
                         <div>
@@ -876,6 +957,59 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
+        // Función global para descargar recursos - ACTUALIZADA CON TUS URLs REALES
+        window.downloadResource = function(resourceId) {
+            const urls = {
+                'valores-m2': 'https://docs.google.com/spreadsheets/d/1KYAITYD-g-sa1YolJi5NbQKGQjjPy82bDB4YGouyzXU/export?format=xlsx',
+                'proyectos-premium': 'https://docs.google.com/spreadsheets/d/1qgRs9uG7HdM7rlG0DildBnPmokDk_aYNFxXy2j1LtEU/export?format=xlsx'
+            };
+
+            const resourceNames = {
+                'valores-m2': 'Valores_por_Metro_Cuadrado_Materialidades.xlsx',
+                'proyectos-premium': 'Listado_Proyectos_Premium.xlsx'
+            };
+
+            const resourceTitles = {
+                'valores-m2': 'Valores por Metro Cuadrado',
+                'proyectos-premium': 'Listado de Proyectos Premium'
+            };
+
+            const url = urls[resourceId];
+            const fileName = resourceNames[resourceId];
+            const title = resourceTitles[resourceId];
+            
+            if (url) {
+                // Crear link temporal para descarga
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                link.target = '_blank';
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Mostrar notificación
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = `📥 Descargando ${title}...`;
+                notification.style.background = '#28a745';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 3000);
+                
+                // Log de descarga
+                console.log(`Descarga iniciada: ${title}`);
+            } else {
+                // Mostrar error
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = `❌ Error al descargar ${title}`;
+                notification.style.background = '#CD5C5C';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 4000);
+            }
+        };
+
         class PrefabricadasTrainingPlatform {
             constructor() {
                 this.currentUser = null;
@@ -884,7 +1018,7 @@
                 this.correctAnswers = ['b', 'b', 'a', 'a', 'b', 'a', 'b'];
                 this.userProfile = null;
                 
-                // Videos con YouTube - TUS VIDEOS REALES ACTUALIZADOS
+                // Videos con YouTube - TODOS LOS 8 VIDEOS
                 this.videos = [
                     {
                         title: "¿Quiénes somos?",
@@ -921,11 +1055,87 @@
                         description: "Domina cada etapa de nuestro proceso comercial especializado: consultoría inicial, diseño personalizado, cotización.",
                         src: "https://www.youtube.com/embed/xKY03vo1TGM",
                         duration: "17 min"
+                    },
+                    {
+                        title: "Salvum - Simulación Crediticia",
+                        description: "Aprende a realizar simulaciones crediticias efectivas utilizando nuestro sistema Salvum para ofrecer las mejores opciones de financiamiento.",
+                        src: "https://www.youtube.com/embed/jQCo7iiAO88",
+                        duration: "5 min"
+                    },
+                    {
+                        title: "Pre Reserva",
+                        description: "Domina el proceso de pre-reserva en nuestro sistema. Aprende a ejecutar reservas eficientemente y garantizar la satisfacción del cliente.",
+                        src: "https://www.youtube.com/embed/QJ4CMxgVlc0",
+                        duration: "4 min"
                     }
                 ];
 
                 this.initAuth();
                 this.setupEventListeners();
+            }
+
+            updateProgress() {
+                const progress = (this.completedVideos.size / this.videos.length) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressText').textContent = 
+                    `${this.completedVideos.size} de ${this.videos.length} videos completados (${Math.round(progress)}%)`;
+            }
+
+            async markVideoComplete() {
+                this.completedVideos.add(this.currentVideo);
+                
+                // Save progress to Firebase
+                await this.saveProgress();
+                
+                // Update UI
+                const videoItem = document.querySelectorAll('.video-item')[this.currentVideo];
+                videoItem.classList.add('completed');
+                if (!videoItem.querySelector('.completion-badge')) {
+                    videoItem.innerHTML += '<span class="completion-badge">✓</span>';
+                }
+
+                const completeBtn = document.getElementById('markCompleteBtn');
+                completeBtn.textContent = '✅ Completado';
+                completeBtn.disabled = true;
+
+                this.updateProgress();
+
+                // Check if all videos completed
+                if (this.completedVideos.size === this.videos.length) {
+                    setTimeout(() => {
+                        this.showNotification('¡Felicitaciones! Has completado toda la capacitación. ¡Hora del examen final!', 'success');
+                        this.showExam();
+                    }, 1500);
+                } else if (this.currentVideo < this.videos.length - 1) {
+                    setTimeout(() => this.nextVideo(), 1000);
+                }
+            }
+
+            async loadUserProfile() {
+                if (!this.currentUser) return;
+
+                try {
+                    const userDoc = await getDoc(doc(db, 'users', this.currentUser.uid));
+                    if (userDoc.exists()) {
+                        this.userProfile = userDoc.data();
+                        const progress = this.userProfile.progress || {};
+                        
+                        this.completedVideos = new Set(progress.completedVideos || []);
+                        this.currentVideo = progress.currentVideo || 0;
+                        
+                        this.showMainApp();
+                        this.updateUserInfo();
+                        this.loadVideo(this.currentVideo);
+                        this.updateProgress();
+                        this.updateUIFromProgress();
+                    } else {
+                        this.showNotification('Perfil no encontrado. Por favor registrate nuevamente.', 'error');
+                        this.logout();
+                    }
+                } catch (error) {
+                    console.error('Error loading profile:', error);
+                    this.showNotification('Error al cargar perfil', 'error');
+                }
             }
 
             initAuth() {
@@ -1054,34 +1264,6 @@
                 }
             }
 
-            async loadUserProfile() {
-                if (!this.currentUser) return;
-
-                try {
-                    const userDoc = await getDoc(doc(db, 'users', this.currentUser.uid));
-                    if (userDoc.exists()) {
-                        this.userProfile = userDoc.data();
-                        const progress = this.userProfile.progress || {};
-                        
-                        this.completedVideos = new Set(progress.completedVideos || []);
-                        this.currentVideo = progress.currentVideo || 0;
-                        
-                        this.showMainApp();
-                        this.updateUserInfo();
-                        this.loadVideo(this.currentVideo);
-                        this.updateProgress();
-                        this.updateUIFromProgress();
-                    } else {
-                        // Usuario sin perfil, redirigir a registro
-                        this.showNotification('Perfil no encontrado. Por favor registrate nuevamente.', 'error');
-                        this.logout();
-                    }
-                } catch (error) {
-                    console.error('Error loading profile:', error);
-                    this.showNotification('Error al cargar perfil', 'error');
-                }
-            }
-
             updateUserInfo() {
                 if (this.userProfile) {
                     document.getElementById('userName').textContent = this.userProfile.fullName || 'Usuario';
@@ -1138,7 +1320,6 @@
                 try {
                     await signOut(auth);
                     this.showNotification('¡Hasta luego!', 'info');
-                    // Reset state
                     this.currentUser = null;
                     this.userProfile = null;
                     this.currentVideo = 0;
@@ -1154,22 +1335,18 @@
                 this.currentVideo = index;
                 const video = this.videos[index];
 
-                // Update video player
                 document.getElementById('videoPlayer').src = video.src;
                 document.getElementById('videoTitle').textContent = video.title;
                 document.getElementById('videoDescription').textContent = video.description;
 
-                // Update navigation buttons
                 document.getElementById('prevBtn').disabled = index === 0;
                 document.getElementById('nextBtn').disabled = index === this.videos.length - 1;
 
-                // Update video list
                 document.querySelectorAll('.video-item').forEach((item, i) => {
                     item.classList.remove('active');
                     if (i === index) item.classList.add('active');
                 });
 
-                // Update completion button
                 const completeBtn = document.getElementById('markCompleteBtn');
                 if (this.completedVideos.has(index)) {
                     completeBtn.textContent = '✅ Completado';
@@ -1192,43 +1369,6 @@
                 } else if (this.completedVideos.size === this.videos.length) {
                     this.showExam();
                 }
-            }
-
-            async markVideoComplete() {
-                this.completedVideos.add(this.currentVideo);
-                
-                // Save progress to Firebase
-                await this.saveProgress();
-                
-                // Update UI
-                const videoItem = document.querySelectorAll('.video-item')[this.currentVideo];
-                videoItem.classList.add('completed');
-                if (!videoItem.querySelector('.completion-badge')) {
-                    videoItem.innerHTML += '<span class="completion-badge">✓</span>';
-                }
-
-                const completeBtn = document.getElementById('markCompleteBtn');
-                completeBtn.textContent = '✅ Completado';
-                completeBtn.disabled = true;
-
-                this.updateProgress();
-
-                // Check if all videos completed
-                if (this.completedVideos.size === this.videos.length) {
-                    setTimeout(() => {
-                        this.showNotification('¡Felicitaciones! Has completado toda la capacitación. ¡Hora del examen final!', 'success');
-                        this.showExam();
-                    }, 1500);
-                } else if (this.currentVideo < this.videos.length - 1) {
-                    setTimeout(() => this.nextVideo(), 1000);
-                }
-            }
-
-            updateProgress() {
-                const progress = (this.completedVideos.size / this.videos.length) * 100;
-                document.getElementById('progressFill').style.width = progress + '%';
-                document.getElementById('progressText').textContent = 
-                    `${this.completedVideos.size} de ${this.videos.length} videos completados (${Math.round(progress)}%)`;
             }
 
             updateUIFromProgress() {
@@ -1287,7 +1427,6 @@
 
                 const percentage = Math.round((score / this.correctAnswers.length) * 100);
                 
-                // Save exam result
                 await this.saveExamResult(score, percentage, answers);
 
                 if (percentage === 100) {
@@ -1320,14 +1459,12 @@
                 if (!this.currentUser) return;
 
                 try {
-                    // Update user progress
                     await updateDoc(doc(db, 'users', this.currentUser.uid), {
                         'progress.examCompleted': true,
                         'progress.examScore': percentage,
                         'progress.examDate': serverTimestamp()
                     });
 
-                    // Save exam attempt
                     await addDoc(collection(db, 'examAttempts'), {
                         userId: this.currentUser.uid,
                         score,
@@ -1364,13 +1501,11 @@
                 document.getElementById('examContainer').style.display = 'none';
                 document.getElementById('certificateContainer').style.display = 'block';
                 
-                // Set user name and date
                 if (this.userProfile) {
                     document.getElementById('studentNameDisplay').textContent = this.userProfile.fullName;
                 }
                 document.getElementById('certDate').textContent = new Date().toLocaleDateString('es-ES');
                 
-                // Generate and display certificate ID
                 const certificateId = await this.issueCertificate();
                 if (certificateId) {
                     document.getElementById('certificateId').textContent = certificateId;
@@ -1451,7 +1586,6 @@
                     this.currentVideo = 0;
                     this.completedVideos.clear();
                     
-                    // Reset Firebase
                     if (this.currentUser) {
                         await updateDoc(doc(db, 'users', this.currentUser.uid), {
                             'progress.completedVideos': [],
@@ -1463,7 +1597,6 @@
                         });
                     }
                     
-                    // Reset UI
                     document.querySelectorAll('.video-item').forEach(item => {
                         item.classList.remove('completed', 'active');
                         const badge = item.querySelector('.completion-badge');
